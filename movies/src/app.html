@@ -1,16 +1,27 @@
 <template>
 
-  <h3>You have ${movies.length} movies.</h3>
-  <table class="table">
-    <tr>
-      <th>Title</th>
-      <th>Year</th>
-    </tr>
-    <tr repeat.for="movie of movies">
-      <td>${movie.title}</td>
-      <td>${movie.releaseYear}</td>
-    </tr>
-  </table>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a href="#" class="navbar-brand">
+          Movies
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <table class="table">
+      <tr>
+        <th>Title</th>
+        <th>Year</th>
+      </tr>
+      <tr repeat.for="movie of movies">
+        <td>${movie.title}</td>
+        <td>${movie.releaseYear}</td>
+      </tr>
+    </table>
+  </div>
 
   <compose view-model="currentDate"></compose>
 </template>
