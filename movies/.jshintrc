@@ -1,0 +1,11 @@
+{
+  "esnext": true,
+  "browser": true,
+  "undef": true,
+  "eqeqeq": true,
+  "globals": {
+    "console": false,
+    "alert": false,
+    "System": false
+  }
+}
