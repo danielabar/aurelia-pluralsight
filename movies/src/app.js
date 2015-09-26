@@ -2,9 +2,13 @@ import {HttpClient} from 'aurelia-http-client';
 
 export class App {
 
-  constructor() {
+  static inject() {
+    return [HttpClient];
+  }
+
+  constructor(httpClient) {
     this.message = '';
-    this.http = new HttpClient(); // later will inject
+    this.http = httpClient;
   }
 
   activate() {
