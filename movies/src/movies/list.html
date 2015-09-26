@@ -5,10 +5,16 @@
       <tr>
         <th>Title</th>
         <th>Year</th>
+        <th>Action</th>
       </tr>
       <tr repeat.for="movie of movies">
         <td>${movie.title}</td>
         <td>${movie.releaseYear}</td>
+        <td>
+          <a route-href="route: details; params.bind: {id: movie.id}" class="btn btn-default">
+            Details
+          </a>
+        </td>
       </tr>
     </table>
   </div>

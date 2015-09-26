@@ -11,7 +11,14 @@ export class MovieData {
   }
 
   getAll() {
-    return this.http.get(baseUrl + '.json')
+    return this.http.get(`${baseUrl}.json`)
+      .then(response => {
+        return response.content;
+      });
+  }
+
+  getById(id) {
+    return this.http.get(`${baseUrl}${id}.json`)
       .then(response => {
         return response.content;
       });
