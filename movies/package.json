@@ -1,7 +1,7 @@
 {
   "jspm": {
     "directories": {
-      "baseURL": "public"
+      "baseURL": "public/src"
     },
     "dependencies": {
       "aurelia-bootstrapper": "github:aurelia/bootstrapper@^0.17.0",
