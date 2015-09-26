@@ -1,16 +1,13 @@
-import {inject} from 'aurelia-framework';
-import {MovieData} from './movieData';
-
-@inject(MovieData)
 export class App {
 
-  constructor(movieData) {
-    this.movieData = movieData;
-  }
+  configureRouter(config, router) {
+    this.router = router;
 
-  activate() {
-    return this.movieData.getAll()
-      .then(movies => this.movies = movies);
+    // entries with nav:true get exposed as a collection router.navigation that can be used in view
+    config.map([
+      { route: ['', 'list'], moduleId: 'movies/list', title: 'List', nav: true },
+      { route: 'about', moduleId: 'about/about', title: 'About', nav: true }
+    ]);
   }
 
 }

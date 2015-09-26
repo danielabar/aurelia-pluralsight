@@ -1,0 +1,16 @@
+<template>
+
+  <div class="container">
+    <table class="table">
+      <tr>
+        <th>Title</th>
+        <th>Year</th>
+      </tr>
+      <tr repeat.for="movie of movies">
+        <td>${movie.title}</td>
+        <td>${movie.releaseYear}</td>
+      </tr>
+    </table>
+  </div>
+
+</template>

@@ -4,6 +4,6 @@ export function configure(aurelia) {
     .standardConfiguration()
     .developmentLogging();
 
-  aurelia.start().then(a => a.setRoot());
+  aurelia.start().then(a => a.setRoot('app'));
 
 }
