@@ -17,6 +17,7 @@ System.config({
   map: {
     "aurelia-bootstrapper": "github:aurelia/bootstrapper@0.17.0",
     "aurelia-framework": "github:aurelia/framework@0.16.0",
+    "aurelia-http-client": "github:aurelia/http-client@0.11.0",
     "babel": "npm:babel-core@5.8.25",
     "babel-runtime": "npm:babel-runtime@5.8.25",
     "core-js": "npm:core-js@1.2.0",
@@ -61,6 +62,10 @@ System.config({
     },
     "github:aurelia/history-browser@0.8.0": {
       "aurelia-history": "github:aurelia/history@0.7.0",
+      "core-js": "npm:core-js@0.9.18"
+    },
+    "github:aurelia/http-client@0.11.0": {
+      "aurelia-path": "github:aurelia/path@0.9.0",
       "core-js": "npm:core-js@0.9.18"
     },
     "github:aurelia/loader-default@0.10.0": {
