@@ -8,14 +8,6 @@
         </div>
       </div>
 
-      <!-- <div class="row validation-errors" show.bind="hasError">
-        <ul>
-          <li class="invalid" repeat.for="message of validationMessages">
-            ${message}
-          </li>
-        </ul>
-      </div> -->
-
       <div class="panel-body">
         <form class="form-horizontal" validate.bind="validation" submit.trigger="save()">
 
@@ -24,7 +16,7 @@
             <label for="movieTitle" class="col-sm-2 control-label">Title</label>
             <div class="col-sm-10">
               <input type="text" name="movieTitle" placeholder="Title" class="form-control" value.bind="movie.title">
-              <p class="help-block" if.bind="!validation.result.isValid">${validation.result.properties['movie.title'].message}</p>
+              <p class="help-block" if.bind="!validation.result.properties['movie.title'].isValid">${validation.result.properties['movie.title'].message}</p>
             </div>
           </div>
 
@@ -33,6 +25,7 @@
             <label for="movieReleaseYear" class="col-sm-2 control-label">Release Year</label>
             <div class="col-sm-10">
               <input type="text" name="movieReleaseYear" placeholder="Release Year" class="form-control" value.bind="movie.releaseYear">
+              <p class="help-block" if.bind="!validation.result.properties['movie.releaseYear'].isValid">${validation.result.properties['movie.releaseYear'].message}</p>
             </div>
           </div>
 

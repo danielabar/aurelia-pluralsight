@@ -92,3 +92,5 @@ export function configure(aurelia) {
   aurelia.start().then(a => a.setRoot('app'));
 }
 ```
+
+8:19
