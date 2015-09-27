@@ -1,22 +1,9 @@
 <template>
 
-  <!-- Top navigation -->
-  <nav class="navbar navbar-default">
-    <div class="container-fluid">
-      <!-- header -->
-      <div class="navbar-header">
-        <a href="#" class="navbar-brand">
-          Movies
-        </a>
-      </div>
-      <!-- links -->
-      <ul class="nav navbar-nav">
-        <li repeat.for="row of router.navigation" class="${row.isActive ? 'active' : ''}">
-          <a href.bind="row.href">${row.title}</a>
-        </li>
-      </ul>
-    </div>
-  </nav>
+  <require from="./resources/nav-menu"></require>
+
+  <!-- custom element nav, we pass in the router here -->
+  <nav-menu router.bind="router"></nav-menu>
 
   <!-- Loading indicator -->
   <div class="container" show.bind="router.isNavigating">
