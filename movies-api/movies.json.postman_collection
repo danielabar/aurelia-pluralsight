@@ -1,0 +1,56 @@
+{
+	"id": "af9bedb5-d215-446b-e1c6-39e602f1397c",
+	"name": "Aurelia Movies",
+	"description": "",
+	"order": [
+		"9c176bb2-1d6d-9077-a53a-02aace810229",
+		"7fce6691-db77-f359-229e-56d723e8f594"
+	],
+	"folders": [],
+	"timestamp": 1443357351161,
+	"owner": "",
+	"remoteLink": "",
+	"public": false,
+	"requests": [
+		{
+			"id": "7fce6691-db77-f359-229e-56d723e8f594",
+			"headers": "Content-Type: application/json\n",
+			"url": "http://localhost:3000/movies",
+			"pathVariables": {},
+			"preRequestScript": "",
+			"method": "GET",
+			"collectionId": "af9bedb5-d215-446b-e1c6-39e602f1397c",
+			"data": [],
+			"dataMode": "params",
+			"name": "Get all",
+			"description": "Get all movies",
+			"descriptionFormat": "html",
+			"time": 1443357440021,
+			"version": 2,
+			"responses": [],
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {}
+		},
+		{
+			"id": "9c176bb2-1d6d-9077-a53a-02aace810229",
+			"headers": "Content-Type: application/json\n",
+			"url": "http://localhost:3000/movies",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1443357475638,
+			"name": "Create",
+			"description": "Create a new movie",
+			"collectionId": "af9bedb5-d215-446b-e1c6-39e602f1397c",
+			"responses": [],
+			"rawModeData": "{\n    \"title\" : \"Foo\",\n    \"releaseYear\" : 2015\n}"
+		}
+	]
+}
