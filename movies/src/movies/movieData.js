@@ -24,4 +24,12 @@ export class MovieData {
       });
   }
 
+  // TODO: if movie.id then its an update, otherwise, post to save a new movie
+  save(movie) {
+    return this.http.put(`${baseUrl}/${movie.id}`, movie)
+      .then(response => {
+        return response.content;
+      });
+  }
+
 }

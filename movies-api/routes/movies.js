@@ -56,4 +56,28 @@ router.post('/', function(req, res) {
   res.send(201, created);
 });
 
+router.put('/:id', function(req, res) {
+  var movieId = parseInt(req.params.id, 10);
+  var matchingMovie;
+
+  if (!req.body.title) {
+    res.send(400, {error: {message: 'Title is required'} });
+    return;
+  }
+
+  for (var i=0; i<moviesList.length; i++) {
+    if (moviesList[i].id === movieId) {
+      matchingMovie = moviesList[i];
+      matchingMovie.title = req.body.title;
+      matchingMovie.releaseYear = req.body.releaseYear;
+    }
+  }
+
+  if (matchingMovie) {
+    res.send(matchingMovie);
+  } else {
+    res.send(404, {error: {message: 'We did not find a movie with id: ' + req.params.id } });
+  }
+});
+
 module.exports = router;

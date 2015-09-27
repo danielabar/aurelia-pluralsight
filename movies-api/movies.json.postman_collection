@@ -4,7 +4,8 @@
 	"description": "",
 	"order": [
 		"9c176bb2-1d6d-9077-a53a-02aace810229",
-		"7fce6691-db77-f359-229e-56d723e8f594"
+		"7fce6691-db77-f359-229e-56d723e8f594",
+		"58b5dad8-3137-6bd7-2dec-6113f4cc125c"
 	],
 	"folders": [],
 	"timestamp": 1443357351161,
@@ -12,6 +13,27 @@
 	"remoteLink": "",
 	"public": false,
 	"requests": [
+		{
+			"id": "58b5dad8-3137-6bd7-2dec-6113f4cc125c",
+			"headers": "Content-Type: application/json\n",
+			"url": "http://localhost:3000/movies/1",
+			"pathVariables": {},
+			"preRequestScript": "",
+			"method": "PUT",
+			"collectionId": "af9bedb5-d215-446b-e1c6-39e602f1397c",
+			"data": [],
+			"dataMode": "raw",
+			"name": "UPdate",
+			"description": "Update an existing movie",
+			"descriptionFormat": "html",
+			"time": 1443368760646,
+			"version": 2,
+			"responses": [],
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"rawModeData": "{\n    \"title\" : \"Foo\",\n    \"releaseYear\" : 2015\n}"
+		},
 		{
 			"id": "7fce6691-db77-f359-229e-56d723e8f594",
 			"headers": "Content-Type: application/json\n",
