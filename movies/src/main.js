@@ -4,7 +4,7 @@ export function configure(aurelia) {
     .standardConfiguration()
     .developmentLogging()
     .plugin('aurelia-validation')
-    .plugin('resources/index.js');
+    .plugin('resources/index');
 
   aurelia.start().then(a => a.setRoot('app'));
 
