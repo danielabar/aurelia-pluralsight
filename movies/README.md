@@ -43,3 +43,52 @@ Delegate is more flexible because it catches click events on the element AND any
   Save
 </button>
 ```
+
+## HTTP Client Configuration
+
+```javascript
+import {HttpClient} from 'aurelia-http-client';
+
+@inject(HttpClient)
+export class SomeApi {
+
+  let baseUrl = 'http://localhost:3000/movies';
+
+  constructor(httpClient) {
+    this.http = httpClient;
+  }
+
+  save(someObj) {
+    var request = this.http.createRequest();
+    request.asPut()
+      .withUrl(baseUrl)
+      .withHeader('Accept', 'application/json')
+      .withHeader('Content-Type', 'application/json')
+      .withContent(someObj)
+
+    return request.send()
+      .then(response => response.content);
+  }
+}
+```
+
+## Client side validation
+
+Aurelia provides an optional module to perform client side validation. First install it:
+
+```
+jspm install aurelia-validation
+```
+
+Then configure it in `main.js`:
+
+```
+export function configure(aurelia) {
+  aurelia.use
+    .standardConfiguration()
+    .developmentLogging()
+    .plugin('aurelia-validation');
+
+  aurelia.start().then(a => a.setRoot('app'));
+}
+```
