@@ -24,16 +24,20 @@ router.get('/', function(req, res) {
   res.send(moviesList);
 });
 
+// 1 second delay to test UI loading indicator
 router.get('/:id', function(req, res) {
-  var movieId = parseInt(req.params.id, 10);
-  var matchingMovie = moviesList.find(function(movie) {
-    return movieId === movie.id;
-  });
-  if (matchingMovie) {
-    res.send(matchingMovie);
-  } else {
-    res.send(404, {error: {message: 'We did not find a movie with id: ' + req.params.id } });
-  }
+  setTimeout(function() {
+    var movieId = parseInt(req.params.id, 10);
+    var matchingMovie = moviesList.find(function(movie) {
+      return movieId === movie.id;
+    });
+    if (matchingMovie) {
+      res.send(matchingMovie);
+    } else {
+      res.send(404, {error: {message: 'We did not find a movie with id: ' + req.params.id } });
+    }
+  }, 1000);
+
 });
 
 router.post('/', function(req, res) {

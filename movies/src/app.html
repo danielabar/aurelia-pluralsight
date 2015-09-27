@@ -1,25 +1,29 @@
 <template>
 
+  <!-- Top navigation -->
   <nav class="navbar navbar-default">
     <div class="container-fluid">
-
       <!-- header -->
       <div class="navbar-header">
         <a href="#" class="navbar-brand">
           Movies
         </a>
       </div>
-
       <!-- links -->
       <ul class="nav navbar-nav">
         <li repeat.for="row of router.navigation" class="${row.isActive ? 'active' : ''}">
           <a href.bind="row.href">${row.title}</a>
         </li>
       </ul>
-
     </div>
   </nav>
 
+  <!-- Loading indicator -->
+  <div class="container" show.bind="router.isNavigating">
+    <i class="fa fa-spinner fa-spin"></i>
+  </div>
+
+  <!-- Views -->
   <router-view></router-view>
 
 </template>
