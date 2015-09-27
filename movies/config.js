@@ -19,6 +19,7 @@ System.config({
     "aurelia-bootstrapper": "github:aurelia/bootstrapper@0.17.0",
     "aurelia-framework": "github:aurelia/framework@0.16.0",
     "aurelia-http-client": "github:aurelia/http-client@0.11.0",
+    "aurelia-router": "github:aurelia/router@0.12.0",
     "aurelia-validation": "github:aurelia/validation@0.3.1",
     "babel": "npm:babel-core@5.8.25",
     "babel-runtime": "npm:babel-runtime@5.8.25",

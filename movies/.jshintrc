@@ -6,6 +6,7 @@
   "globals": {
     "console": false,
     "alert": false,
-    "System": false
+    "System": false,
+    "require": true
   }
 }

@@ -5,3 +5,6 @@ bower_components
 .DS_STORE
 /dist
 build/reports
+
+src/appbundle.html
+src/appbundle.js

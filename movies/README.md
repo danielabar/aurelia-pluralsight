@@ -119,3 +119,32 @@ Use the custom element in a view
 
 Can also register a custom element in main.js so that it is globally available,
 then don't have to use `<require>` to import it in each view that wishes to use it.
+
+## Production
+
+In development mode, each moduel is loaded via xhr, and ES6 -> ES5 is transpiled on the fly with Babel.
+
+Use aurelia-cli and gulp to transpile, concat and minify all the javascript once at build time.
+
+Install aurelia-cli globally and locally within project.
+
+```
+npm install aurelia-cli -g
+npm install aurelia-cli --save-dev
+npm install gulp-cli -g
+npm install gulp --save-dev
+```
+
+An aurelia file is similar to a gulp or grunt file. It executes under node.js
+and contains bundling instructions.
+
+There are two kinds of bundles, `js` and `template`
+
+Setting `inject: true` in js bundle options will inject the bundle into config.js.
+
+So at runtime, the optimized bundle will be used, and no need to modify `index.html`.
+
+```
+aurelia bundle
+aurelia unbundle
+```
