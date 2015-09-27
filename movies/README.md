@@ -92,3 +92,30 @@ export function configure(aurelia) {
   aurelia.start().then(a => a.setRoot('app'));
 }
 ```
+
+## Custom Element
+
+Add a view (html file with template tag) and viewModel.
+
+Expose bindable properties with `@bindable` (requires enabling `es7.classProperties` in babel options in config.js).
+
+```javascript
+import {bindable} from 'aurelia-framework';
+
+export class NavMenu {
+  @bindable router = null;
+}
+```
+
+Use the custom element in a view
+
+```html
+<template>
+  <require from="./resources/nav-menu"></require>
+  <nav-menu router.bind="router"></nav-menu>
+  ... other view stuff here
+</template>
+```
+
+Can also register a custom element in main.js so that it is globally available,
+then don't have to use `<require>` to import it in each view that wishes to use it.
