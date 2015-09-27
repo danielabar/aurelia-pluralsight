@@ -24,4 +24,16 @@ router.get('/', function(req, res) {
   res.send(moviesList);
 });
 
+router.get('/:id', function(req, res) {
+  var movieId = parseInt(req.params.id, 10);
+  var matchingMovie = moviesList.find(function(movie) {
+    return movieId === movie.id;
+  });
+  if (matchingMovie) {
+    res.send(matchingMovie);
+  } else {
+    res.json(404, {error: {message: 'We did not find a movie with id: ' + req.params.id } });
+  }
+});
+
 module.exports = router;
