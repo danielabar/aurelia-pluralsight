@@ -12,7 +12,8 @@ var config = {
         'aurelia-validation',
       ],
       options: {
-        inject: true
+        inject: true,
+        minify: true
       }
     }
   },
