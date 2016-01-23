@@ -2,10 +2,15 @@ import {HttpClient} from 'aurelia-fetch-client';
 
 export class App {
 
-  constructor() {
+  constructor(httpClient) {
     this.constructorMessage = 'Hello from Aurelia constructor!';
     this.numChanges = 0;
-    this.http = new HttpClient();
+    this.http = httpClient;
+  }
+
+  // ES2015 way for DI
+  static inject() {
+    return [HttpClient]
   }
 
   activate() {

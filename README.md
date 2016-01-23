@@ -161,7 +161,7 @@ Aurelia will look for currentDate.js view model and currentDate.html view.
 
 ### Fetching Data
 
-First install the http client:
+First install the http client. Note this is not a core Aurelia framework component, you could use any other http client module in its place.
 
 ```shell
 jspm install aurelia-fetch-client
@@ -207,6 +207,22 @@ Now "movies" can be used in the view:
 
 In addition to custom elements like Compose, Aurelia also provides some _custom attributes_ such as "repeat".
 "repeat.for" can be used to loop through collection (eg: movies), and for each item, put it in a local variable (eg: movie), and stamp out the current dom element (the one which is using "repeat.for") and all its children for each item in the collection.
+
+### Dependency Injection
+
+To decouple view models from their direct dependencies. The core Aurelia framework provides an inversion of control container with _dependency injection_ features. The container is able to construct the view model and _pass in_ the dependencies it needs (such as http client) as constructor parameters. In this way, the view model does not need to instantiate its own dependencies, making it easier to unit test, where mock implementations of the dependencies can be passed in.
+
+To allow Aurelia's DI container to inject the proper components, need to add some metadata to the view model class.
+
+Can be done in ES2015 by adding static inject method to class. The DI container will look for this method to retrieve metadata about what needs to be injected, i.e. what components does this class need in order to be constructed.
+
+The inject method returns an array (because there could be multiple constructor parameters) with the class names. The DI container will look up what to use for the particular symbol (in this case HttpClient), then create an instance of that object and inject it into the constructor.
+
+```javascript
+static inject() {
+  return [HttpClient];
+}
+```
 
 ## Data Binding
 
