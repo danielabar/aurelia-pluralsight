@@ -1,16 +1,13 @@
+import {inject} from 'aurelia-framework';
 import {HttpClient} from 'aurelia-fetch-client';
 
+@inject(HttpClient)
 export class App {
 
   constructor(httpClient) {
     this.constructorMessage = 'Hello from Aurelia constructor!';
     this.numChanges = 0;
     this.http = httpClient;
-  }
-
-  // ES2015 way for DI
-  static inject() {
-    return [HttpClient]
   }
 
   activate() {

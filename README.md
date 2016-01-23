@@ -224,6 +224,33 @@ static inject() {
 }
 ```
 
+Another way to use DI is with _decorators_, part of ES2016 specification. A decorator can execute code against its target and modify it. The `inject` decorator from the Aurelia framework modifies the target class by adding in the metadata it needs. For example:
+
+```javascript
+import {inject} from 'aurelia-framework'
+
+@inject(HttpClient)
+export class App {
+
+  constructor(httpClient) {
+    this.http = httpClient;
+  }
+
+}
+```
+
+To use decorators, need to turn on es7 features in `config.js`:
+
+```javascript
+babelOptions: {
+  "optional": [
+    "runtime",
+    "optimisation.modules.system",
+    "es7.decorators"  // Add this
+  ]
+}
+```
+
 ## Data Binding
 
 `show.bind` hides and shows an element depending on truthiness of expression.
