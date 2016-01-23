@@ -327,6 +327,8 @@ main.js should export a `configure` function because that's what the framework w
 
 When the framework invokes the configure function, its going to pass in the `aurelia` object, which exposes a fluent api to specify what should be used.
 
+See [the docs](http://aurelia.io/docs.html#/aurelia/framework/1.0.0-beta.1.0.8/doc/article/app-configuration-and-startup) for more on startup configuration.
+
 ## Data Binding
 
 `show.bind` hides and shows an element depending on truthiness of expression.
