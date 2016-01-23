@@ -315,7 +315,17 @@ jspm install bootstrap
 
 ## Configuration and routing
 
-TBD...
+In the absence of any configuration, the bootstrapper module looks for the "app" view/view model pair and loads them. To take more control of the startup, provide a value for aurelia-app in the index.html, which is be the name of the module that will provide the configuration information:
+
+```html
+<body aurelia-app="main">
+...
+</body>
+```
+
+main.js should export a `configure` function because that's what the framework will look for and invoke as the bootstrapper is putting all the pieces together. [Example](movies-client/public/main.js)
+
+When the framework invokes the configure function, its going to pass in the `aurelia` object, which exposes a fluent api to specify what should be used.
 
 ## Data Binding
 
