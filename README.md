@@ -251,6 +251,11 @@ babelOptions: {
 }
 ```
 
+### Services
+
+Can add your own custom modules for business logic, to abstract this away from the view model.
+For example, a MovieService module to handle fetching movie data from the server. Custom modules can also make use of Aurelia's DI container in the same way a view model does. [Example](hello-aurelia/public/movie/movie-service.js)
+
 ## Data Binding
 
 `show.bind` hides and shows an element depending on truthiness of expression.

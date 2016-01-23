@@ -1,19 +1,18 @@
 import {inject} from 'aurelia-framework';
-import {HttpClient} from 'aurelia-fetch-client';
+import {MovieService} from './movie/movie-service.js';
 
-@inject(HttpClient)
+@inject(MovieService)
 export class App {
 
-  constructor(httpClient) {
+  constructor(movieService) {
     this.constructorMessage = 'Hello from Aurelia constructor!';
     this.numChanges = 0;
-    this.http = httpClient;
+    this.movieService = movieService;
   }
 
   activate() {
     this.activationMessage = 'Hello from Aurelia activate!';
-    return this.http.fetch('http://localhost:3000/movies')
-      .then(response => response.json())
+    return this.movieService.fetchAll()
       .then(movies => this.movies = movies);
   }
 
