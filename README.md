@@ -1,3 +1,30 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](http://doctoc.herokuapp.com/)*
+
+- [Building Applications with Aurelia](#building-applications-with-aurelia)
+  - [Getting started with JSPM](#getting-started-with-jspm)
+    - [config.js](#configjs)
+    - [System.js](#systemjs)
+  - [Getting started with Aurelia](#getting-started-with-aurelia)
+    - [MVVM and Conventions](#mvvm-and-conventions)
+    - [Summary of bootstrapping process](#summary-of-bootstrapping-process)
+  - [Views and View Models](#views-and-view-models)
+    - [Compose](#compose)
+    - [Fetching Data](#fetching-data)
+    - [Dependency Injection](#dependency-injection)
+    - [Services](#services)
+    - [UI](#ui)
+  - [Configuration and routing](#configuration-and-routing)
+  - [Data Binding](#data-binding)
+  - [HTTP Client Configuration](#http-client-configuration)
+  - [Client side validation](#client-side-validation)
+  - [Custom Element](#custom-element)
+  - [Production Bundling](#production-bundling)
+  - [Further optimizations](#further-optimizations)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # Building Applications with Aurelia
 
 > My course notes from [Pluralsight course on Aurelia](https://app.pluralsight.com/library/courses/building-applications-aurelia/table-of-contents)
@@ -137,7 +164,7 @@ Finally, need to tell Aurelia where to load views in the DOM. This is specified 
 
 Note that application is written as just plain javascript and html, with a few special attributes and data binding expressions. No framework spepcific code to be found in viewModels.
 
-### Views and View Models
+## Views and View Models
 
 Separation of concerns between Model, View Model and View, for example:
 
@@ -285,6 +312,10 @@ Can use any css framework with Aurelia. For example, to use Bootstrap:
 ```shell
 jspm install bootstrap
 ```
+
+## Configuration and routing
+
+TBD...
 
 ## Data Binding
 
