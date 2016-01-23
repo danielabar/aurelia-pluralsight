@@ -4,7 +4,9 @@
 
 ## Getting started with JSPM
 
-Start at root of project:
+JSPM is a package manager. It can be used to install packages and also configure itself (via entries in `config.js`) such that at runtime, the module loader will be able to locate these packages and make http requests to fetch js files.
+
+To use it, start at root of project:
 
 ```shell
 jspm init
@@ -12,7 +14,7 @@ jspm init
 * yes to create `package.json`, both npm and jspm use package.json to keep track of dependencies
 * yes to prefix jspm properties in package.json
 * enter path where static assets are served from, eg `public`
-* accept default of `jspm_packages` folder under `public`
+* accept default of `jspm_packages` folder under `public`, this is where jspm will install libraries
 * yes to create `public/config.js`
 * client base url can be `/`, i.e. what client would enter to get to the website
 * yes to transpiler, babel
@@ -26,11 +28,19 @@ To kick it off, need to load two scripts in index.html:
 
 ### config.js
 
-config.js contains the configuration information for the project, so that system.js can load the application and the libraries it requires. For the most part, jspm manages this file. Generally don't need to manually edit this setting, except for some optional transpiler settings.
+config.js contains the configuration information for the project, so that system.js can load the application and the libraries it requires. For the most part, jspm creates and maintains this file.
+
+Generally don't need to manually edit this setting, except for some optional transpiler settings.
+
+Provides the mapping between package names and locations on the file server.
 
 ### System.js
 
-config.js is the configuration for _System.js_, which is a universal dynamic module loader. It understands how to load ES2015 modules, AMD, and CommonJS.
+config.js is the configuration for _System.js_, which is a universal dynamic module loader. It understands how to load ES2015 modules, AMD, and CommonJS. Provides an API that is intended to be the future spec for loading modules natively in the browser.
+
+Provides a standard global object `System`, which provides an api to import and load JavaScript modules.
+
+The module loader is also capable of transpiling es2015 files on the fly to javascript, using the configured transpiler specified in config.js.
 
 To tell System.js to load a module, for example to kick things off in index.html:
 
