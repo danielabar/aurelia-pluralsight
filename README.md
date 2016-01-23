@@ -55,6 +55,88 @@ To tell System.js to load a module, for example to kick things off in index.html
 </body>
 ```
 
+## Getting started with Aurelia
+
+Aurelia is designed as multiple smaller modules rather than a single monolith.
+For example, aurelia-framework contains the core framework, for data binding and templating,
+aurelia-bootstrapper is for kickstarting an aurelia application.
+
+First use jspm to install the framework:
+
+```shell
+jspm install aurelia-framework
+jspm install aurelia-bootstrapper
+```
+
+To kick off the app from index.html:
+
+```html
+<body>
+
+  <script src="jspm_packages/system.js"></script>
+  <script src="config.js"></script>
+  <script>
+    System.import('aurelia-bootstrapper');
+  </script>
+</body>
+```
+
+Like many frameworks, Aurelia is going to take control, manage browser, history, routing, etc.
+and will call into your application code, bootstrapper loads the application.
+
+### MVVM and Conventions
+
+By _convention_, the first thing the bootstrapper will do (if not given any other information), is to load the first _viewModel_ for the application, named "app".
+
+Aurelia uses the Model-View-ViewModel design pattern to provide separation of concerns.
+
+It will look for a viewModel for the application, and a corresponding view, and tie them together and load.
+
+A viewModel is implemented as a class, simple example:
+
+```javascript
+export class App {
+
+  constructor() {
+    this.message = 'Hello from Aurelia!';
+  }
+
+  changeMessge() {
+    this.message = 'foo';
+  }
+
+}
+```
+
+Also by convention, Aurelia will look for a view `app.html`, i.e. the same name as `app.js` but with html extension, and in the same directory as the viewModel.
+
+Views are html _templates_, simple example with a binding expression from the view:
+
+```html
+<template>
+  <div>${message}</div>
+  <button click.trigger="changeMessage()">Click Me</button>
+</template>
+```
+
+`click.trigger` is a binding expression that tells Aurelia when the user clicked the button, and will invoke the `changeMessage` method on the viewModel.
+
+Finally, need to tell Aurelia where to load views in the DOM. This is specified with "aurelia-app" attribute in the index.html, for example:
+
+```html
+<body aurelia-app>
+</body>
+```
+
+### Summary of bootstrapping process
+
+* module loader loads aurelia-bootstrapper as specified by `System.import` in index.html
+* aurelia-bootstrapper will look for `app.js` module
+* aurelia-framework will construct an instance of the `app.js` viewModel, load the corresponding `app.html` view, tie the two together, and handle all the binding expressions in the view.
+* if viewModel has an `activate()` method, Aurelia will call it before the view is rendered.
+
+Note that application is written as just plain javascript and html, with a few special attributes and data binding expressions.
+
 ## Data Binding
 
 `show.bind` hides and shows an element depending on truthiness of expression.
