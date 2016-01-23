@@ -1,0 +1,23 @@
+<template>
+
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a href="#" class="navbar-brand">Movies</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <table class="table">
+      <tr>
+        <th>Title</th>
+        <th>Release Year</th>
+      </tr>
+      <tr repeat.for="move of movies">
+        <td>${move.title}</td>
+        <td>${move.releaseYear}</td>
+      </tr>
+    </table>
+  </div>
+</template>
