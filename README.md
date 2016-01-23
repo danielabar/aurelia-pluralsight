@@ -135,7 +135,19 @@ Finally, need to tell Aurelia where to load views in the DOM. This is specified 
 * aurelia-framework will construct an instance of the `app.js` viewModel, load the corresponding `app.html` view, tie the two together, and handle all the binding expressions in the view.
 * if viewModel has an `activate()` method, Aurelia will call it before the view is rendered.
 
-Note that application is written as just plain javascript and html, with a few special attributes and data binding expressions.
+Note that application is written as just plain javascript and html, with a few special attributes and data binding expressions. No framework spepcific code to be found in viewModels.
+
+## Views and View Models
+
+Separation of concerns between Model, View Model and View, for example:
+
+![Image of MVVM Pattern](images/mvvm.png)
+
+_Model_ data is fetched from an http service, which is then attached to a _View Model_, which is a model object specifically constructed for the responsibility of presenting data to the _View_, and handling behaviors associated with the view. For example, the View Model can contain logic associated with button click events.
+
+The _View_ ideally has no logic. Contains only markup for UI and some simple binding expressions that glue the view to the view model.
+
+In summary, the view has no logic, whereas the View Model has no knowledge of the presentation format.
 
 ## Data Binding
 
