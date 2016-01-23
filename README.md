@@ -149,6 +149,18 @@ The _View_ ideally has no logic. Contains only markup for UI and some simple bin
 
 In summary, the view has no logic, whereas the View Model has no knowledge of the presentation format.
 
+### Compose
+
+Compose is one technique for creating custom html elements. Tell Aurelia that a particular piece of the presentation should be delegated to another view model.
+
+Simple example, to load a component that will display the current date:
+
+```html
+<compose view-model="currentDate"></compose>
+```
+
+Aurelia will look for currentDate.js view model and currentDate.html view.
+
 ## Data Binding
 
 `show.bind` hides and shows an element depending on truthiness of expression.
