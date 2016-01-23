@@ -15,6 +15,7 @@ System.config({
 
   map: {
     "aurelia-bootstrapper": "npm:aurelia-bootstrapper@1.0.0-beta.1.0.2",
+    "aurelia-fetch-client": "npm:aurelia-fetch-client@1.0.0-beta.1.0.2",
     "aurelia-framework": "npm:aurelia-framework@1.0.0-beta.1.0.8",
     "babel": "npm:babel-core@5.8.35",
     "babel-runtime": "npm:babel-runtime@5.8.35",
@@ -64,6 +65,9 @@ System.config({
     },
     "npm:aurelia-event-aggregator@1.0.0-beta.1": {
       "aurelia-logging": "npm:aurelia-logging@1.0.0-beta.1"
+    },
+    "npm:aurelia-fetch-client@1.0.0-beta.1.0.2": {
+      "core-js": "npm:core-js@1.2.6"
     },
     "npm:aurelia-framework@1.0.0-beta.1.0.8": {
       "aurelia-binding": "npm:aurelia-binding@1.0.0-beta.1.0.5",

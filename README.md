@@ -137,7 +137,7 @@ Finally, need to tell Aurelia where to load views in the DOM. This is specified 
 
 Note that application is written as just plain javascript and html, with a few special attributes and data binding expressions. No framework spepcific code to be found in viewModels.
 
-## Views and View Models
+### Views and View Models
 
 Separation of concerns between Model, View Model and View, for example:
 
@@ -151,15 +151,62 @@ In summary, the view has no logic, whereas the View Model has no knowledge of th
 
 ### Compose
 
-Compose is one technique for creating custom html elements. Tell Aurelia that a particular piece of the presentation should be delegated to another view model.
-
-Simple example, to load a component that will display the current date:
+Compose is an Aurelia defined custom element. It tells Aurelia that a particular piece of the presentation should be delegated to another view model. Simple example, to load a component that will display the current date:
 
 ```html
 <compose view-model="currentDate"></compose>
 ```
 
 Aurelia will look for currentDate.js view model and currentDate.html view.
+
+### Fetching Data
+
+First install the http client:
+
+```shell
+jspm install aurelia-fetch-client
+```
+
+To use it in a view model, import it. Then for this simple example, instantiate it in constructor. Later will use dependency injection. Use it in activate method to return a promise:
+
+```javascript
+import {HttpClient} from 'aurelia-fetch-client';
+
+export class App {
+
+  constructor() {
+    this.http = new HttpClient();
+  }
+
+  activate() {
+    return this.http.fetch('http://localhost:3000/movies')
+      .then(response => response.json())
+      .then(movies => this.movies = movies);
+  }
+
+}
+```
+
+Now "movies" can be used in the view:
+
+```html
+<div class="movies-container">
+  You have ${movies.length} movies.
+  <table>
+    <tr>
+      <th>Title</th>
+      <th>Release Year</th>
+    </tr>
+    <tr repeat.for="movie of movies">
+      <td>${movie.title}</td>
+      <td>${movie.releaseYear}</td>
+    </tr>
+  </table>
+</div>
+```
+
+In addition to custom elements like Compose, Aurelia also provides some _custom attributes_ such as "repeat".
+"repeat.for" can be used to loop through collection (eg: movies), and for each item, put it in a local variable (eg: movie), and stamp out the current dom element (the one which is using "repeat.for") and all its children for each item in the collection.
 
 ## Data Binding
 

@@ -1,8 +1,23 @@
 <template>
   <div>${constructorMessage}</div>
   <div>${activationMessage}</div>
+
   <div>${dynamicMessage}</div>
   <button click.trigger="changeMessage()">Change Message</button>
 
   <compose view-model="util/CurrentDate"></compose>
+
+  <div class="movies-container">
+    You have ${movies.length} movies.
+    <table>
+      <tr>
+        <th>Title</th>
+        <th>Release Year</th>
+      </tr>
+      <tr repeat.for="move of movies">
+        <td>${move.title}</td>
+        <td>${move.releaseYear}</td>
+      </tr>
+    </table>
+  </div>
 </template>
