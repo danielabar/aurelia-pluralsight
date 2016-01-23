@@ -1,15 +1,24 @@
 <template>
+
+  <nav class="navbar">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a href="#" class="navbar-brand">Movies</a>
+      </div>
+    </div>
+  </nav>
+
   <div>${constructorMessage}</div>
   <div>${activationMessage}</div>
 
   <div>${dynamicMessage}</div>
-  <button click.trigger="changeMessage()">Change Message</button>
+  <button class="btn btn-default" click.trigger="changeMessage()">Change Message</button>
 
   <compose view-model="util/CurrentDate"></compose>
 
-  <div class="movies-container">
+  <div class="container">
     You have ${movies.length} movies.
-    <table>
+    <table class="table table-striped">
       <tr>
         <th>Title</th>
         <th>Release Year</th>

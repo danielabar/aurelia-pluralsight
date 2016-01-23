@@ -256,6 +256,36 @@ babelOptions: {
 Can add your own custom modules for business logic, to abstract this away from the view model.
 For example, a MovieService module to handle fetching movie data from the server. Custom modules can also make use of Aurelia's DI container in the same way a view model does. [Example](hello-aurelia/public/movie/movie-service.js)
 
+Then in 'app.js', instead of importing aurelia-fetch-client, import the custom service and inject it. Note since its a local module, must specify the path:
+
+```javascript
+import {MovieService} from './movie/movie-service.js';
+// other imports...
+
+@inject(MovieService)
+export class App {
+  constructor(movieService) {
+    this.movieService = movieService;
+  }
+  activate() {
+    return this.movieService.fetchAll()
+      .then(movies => this.movies = movies);
+  }
+}
+```
+
+By default, Aurelia's DI container treats the services and components that it instantiates as _singletons_.
+
+The `@transient` decorator will change this and make a new instantiation each time that component is required.
+
+### UI
+
+Can use any css framework with Aurelia. For example, to use Bootstrap:
+
+```shell
+jspm install bootstrap
+```
+
 ## Data Binding
 
 `show.bind` hides and shows an element depending on truthiness of expression.
