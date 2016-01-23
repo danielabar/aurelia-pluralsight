@@ -1,3 +1,50 @@
+# Building Applications with Aurelia
+
+> My course notes from [Pluralsight course on Aurelia](https://app.pluralsight.com/library/courses/building-applications-aurelia/table-of-contents)
+
+## Getting started with JSPM
+
+Start at root of project:
+
+```shell
+jspm init
+```
+* yes to create `package.json`, both npm and jspm use package.json to keep track of dependencies
+* yes to prefix jspm properties in package.json
+* enter path where static assets are served from, eg `public`
+* accept default of `jspm_packages` folder under `public`
+* yes to create `public/config.js`
+* client base url can be `/`, i.e. what client would enter to get to the website
+* yes to transpiler, babel
+
+jspm is not just a package manager, but also serves up scripts that function as a run-time environment for application. These scripts can dynamically transpile js on the fly and dynamically load modules.
+
+To kick it off, need to load two scripts in index.html:
+
+* system.js itself, which was installed as part of jspm init
+* config.js, which was generated as part of jspm init
+
+### config.js
+
+config.js contains the configuration information for the project, so that system.js can load the application and the libraries it requires. For the most part, jspm manages this file. Generally don't need to manually edit this setting, except for some optional transpiler settings.
+
+### System.js
+
+config.js is the configuration for _System.js_, which is a universal dynamic module loader. It understands how to load ES2015 modules, AMD, and CommonJS.
+
+To tell System.js to load a module, for example to kick things off in index.html:
+
+```html
+<body>
+
+  <script src="jspm_packages/system.js"></script>
+  <script src="config.js"></script>
+  <script>
+    System.import('app');
+  </script>
+</body>
+```
+
 ## Data Binding
 
 `show.bind` hides and shows an element depending on truthiness of expression.
