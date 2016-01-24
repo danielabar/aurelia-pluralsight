@@ -15,7 +15,10 @@
     - [Dependency Injection](#dependency-injection)
     - [Services](#services)
     - [UI](#ui)
-  - [Configuration and routing](#configuration-and-routing)
+  - [Configuration and Routing](#configuration-and-routing)
+    - [Client Side Routing](#client-side-routing)
+      - [Configure Routes](#configure-routes)
+      - [Route Parameters](#route-parameters)
   - [Data Binding](#data-binding)
   - [HTTP Client Configuration](#http-client-configuration)
   - [Client side validation](#client-side-validation)
@@ -364,7 +367,7 @@ For example, note the use of string interpolation and ternary operator in the cl
 </li>
 ```
 
-#### Configure Routes
+### Configure Routes
 
 Provide an array of routes, each being an object specifying the url and what to do when the url and route match.
 
@@ -374,7 +377,7 @@ If `route` is an empty string, that matches application root, i.e. `http://local
 
 `route` can also be an array indicating any of the strings should match, ` { route : ['', 'home'], ...}` means if url is root or `/#/home`, then that's a match.
 
-#### Route Parameters
+### Route Parameters
 
 Start by defining a route, note the `name` parameter. This will be used to reference it in the `route-href` attribute in the view:
 
@@ -411,6 +414,31 @@ Even if a route does not have parameters, it can be referenced by name in the vi
 
 ```html
 <a route-href="route: home">Back to list</a>
+```
+
+### Navigation Animation
+
+To show a loading indicator when app is navigating from one view to the next. For example, there could be a delay in getting data from the network.
+
+Not required, but install font-awesome for useful icons:
+
+```shell
+jspm install font-awesome
+```
+
+Add the font awesome css to index.html:
+
+```html
+<link rel="stylesheet" href="jspm_packages/npm/font-awesome@4.5.0/css/font-awesome.css">
+```
+
+Modify the app view to display a spinning icon, _only_ when navigation is in progress.
+Aurelia provides custom attribute `show`. Bind expression `router.isNavigating` to `show` to have the content only display when this expression is true. Recall `router` is exposed to view via view model `this.router = router;`
+
+```html
+<div class="container" show.bind="router.isNavigating">
+  <i class="fa fa-spinner fa-spin"></i>
+</div>
 ```
 
 ## Data Binding

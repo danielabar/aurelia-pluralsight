@@ -9,7 +9,7 @@ export class Detail {
   }
 
   activate(params) {
-    this.movieService.fetchOne(params.id)
+    return this.movieService.fetchOne(params.id)
       .then(movie => this.movie = movie);
   }
 

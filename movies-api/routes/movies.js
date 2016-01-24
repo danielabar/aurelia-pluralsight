@@ -34,7 +34,7 @@ router.get('/:id', function(req, res) {
     if (matchingMovie) {
       res.send(matchingMovie);
     } else {
-      res.send(404, {error: {message: 'We did not find a movie with id: ' + req.params.id } });
+      res.status(404).send({error: {message: 'We did not find a movie with id: ' + req.params.id } });
     }
   }, 1000);
 
