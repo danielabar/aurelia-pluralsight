@@ -354,10 +354,12 @@ config.map([
 
 If the url is `http://localhost:8080` or `http://localhost:8080/#/list`, then it will load the movie/list view and view model pair, and display 'List' as the page title.
 
-Setting `nav: true` exposes a collection `router.navigation` that can be used with a `repeat.for` data binding in the view to display navigation links. For example:
+Setting `nav: true` exposes a collection `router.navigation` that can be used with a `repeat.for` data binding in the view to display navigation links. Each object in this collection has an `href` property and `isActive`. Sample usage:
+
+For example, note the use of string interpolation and ternary operator in the class attribute:
 
 ```html
-<li repeat.for="row of router.navigation">
+<li repeat.for="row of router.navigation" class="${row.isActive ? 'active' : ''}">
   <a href.bind="row.href">${row.title}</a>
 </li>
 ```
