@@ -7,10 +7,10 @@
         <th>Release Year</th>
       </tr>
       <tr repeat.for="movie of movies">
-        <td>${movie.title}</td>
+        <td><a route-href="route: detail; params.bind: {id: movie.id}">${movie.title}</a></td>
         <td>${movie.releaseYear}</td>
       </tr>
     </table>
   </div>
-  
+
 </template>

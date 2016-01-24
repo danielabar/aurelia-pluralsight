@@ -6,7 +6,8 @@ export class App {
     this.router = router;
 
     config.map([
-      { route: ['', 'list'], moduleId: 'movie/list', title: 'List', nav: true},
+      { route: ['', 'list'], moduleId: 'movie/list', name: 'home', title: 'List', nav: true},
+      { route: 'detail/:id', moduleId: 'movie/detail', name: 'detail', title: 'Movie Detail'},
       { route: 'about', moduleId: 'about/about', title: 'About', nav: true}
     ]);
   }

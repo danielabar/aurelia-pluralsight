@@ -374,6 +374,45 @@ If `route` is an empty string, that matches application root, i.e. `http://local
 
 `route` can also be an array indicating any of the strings should match, ` { route : ['', 'home'], ...}` means if url is root or `/#/home`, then that's a match.
 
+#### Route Parameters
+
+Start by defining a route, note the `name` parameter. This will be used to reference it in the `route-href` attribute in the view:
+
+```javascript
+{ route: 'detail/:id', moduleId: 'movie/detail', name: 'detail', title: 'Movie Detail'}
+```
+
+Then generate links in the list view that will navigate to a details view. Use Aurelia's custom `route-href` attribute that provides some information for Aurelia to feed to the router, to generate the url. First tell route-href which route you want to go to, and if it requires parameters, then pass them in using `params.bind`, which builds an object literal:
+
+```html
+<tr repeat.for="movie of movies">
+  <td><a route-href="route: detail; params.bind: {id: movie.id}">${movie.title}</a></td>
+</tr>
+```
+
+When Aurelia invokes a route with parameters, these will be passed in as a `params` object into the `activate` method of the view model. Continuing the example above with movie listing:
+
+```javascript
+export class Detail {
+  ...
+  activate(params) {
+    // params.id is the movie id the detail route was invoked with
+  }
+}
+```
+
+Even if a route does not have parameters, it can be referenced by name in the view, for example:
+
+```javascript
+// inside configureRouter
+{ route: ['', 'list'], moduleId: 'movie/list', name: 'home', title: 'List', nav: true},
+// rest of routes...
+```
+
+```html
+<a route-href="route: home">Back to list</a>
+```
+
 ## Data Binding
 
 `show.bind` hides and shows an element depending on truthiness of expression.
