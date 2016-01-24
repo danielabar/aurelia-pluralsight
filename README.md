@@ -313,7 +313,7 @@ Can use any css framework with Aurelia. For example, to use Bootstrap:
 jspm install bootstrap
 ```
 
-## Configuration and routing
+## Configuration and Routing
 
 In the absence of any configuration, the bootstrapper module looks for the "app" view/view model pair and loads them. To take more control of the startup, provide a value for aurelia-app in the index.html, which is be the name of the module that will provide the configuration information:
 
@@ -328,6 +328,49 @@ main.js should export a `configure` function because that's what the framework w
 When the framework invokes the configure function, its going to pass in the `aurelia` object, which exposes a fluent api to specify what should be used.
 
 See [the docs](http://aurelia.io/docs.html#/aurelia/framework/1.0.0-beta.1.0.8/doc/article/app-configuration-and-startup) for more on startup configuration.
+
+### Client Side Routing
+
+The app view model can be considered the top level shell, or entry point, but in a large application, does not contain all the application features. Typically, app view and view model are only responsible for features common to entire application, such as navigation menu.
+
+Specific features will be in separate view and view models. The app view can contain a placeholder, which is area in app view into which different features will appear as user navigates and interacts with the application.
+
+Router will load specific view models when user visits certain urls. Router looks for custom element `<router-view>` as the placeholder into which to load and remove views as the url changes. The router also supports recursion via child routers (router within a router).
+
+Recommend to organize project by feature. Create a directory per feature and put all related files together - view, view model, services etc.
+
+By convention, if a view model exposes a `configureRouter()` method, Aurelia will automatically invoke it, and pass in `config` object where you can setup routing rules, and `router` which is an instance of the router itself. [Example](movies-client/public/app.js)
+
+`router` object can be made part of view model, which makes view able to write binding expressions that use information in the router, for example, to display navigation links.
+
+Full example:
+
+```javascript
+config.map([
+  { route: ['', 'list'], moduleId: 'movie/list', title: 'List', nav: true},
+  { route: 'about', moduleId: 'about/about', title: 'About', nav: true}
+]);
+```
+
+If the url is `http://localhost:8080` or `http://localhost:8080/#/list`, then it will load the movie/list view and view model pair, and display 'List' as the page title.
+
+Setting `nav: true` exposes a collection `router.navigation` that can be used with a `repeat.for` data binding in the view to display navigation links. For example:
+
+```html
+<li repeat.for="row of router.navigation">
+  <a href.bind="row.href">${row.title}</a>
+</li>
+```
+
+#### Configure Routes
+
+Provide an array of routes, each being an object specifying the url and what to do when the url and route match.
+
+For example, `{ route: 'details/:id', ...}` would match url `http://localhost:8080/#/details/3`
+
+If `route` is an empty string, that matches application root, i.e. `http://localhost:8080/`,
+
+`route` can also be an array indicating any of the strings should match, ` { route : ['', 'home'], ...}` means if url is root or `/#/home`, then that's a match.
 
 ## Data Binding
 

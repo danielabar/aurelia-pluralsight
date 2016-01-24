@@ -1,16 +1,14 @@
-import {inject} from 'aurelia-framework';
-import {MovieService} from './movie/movie-service.js';
-
-@inject(MovieService)
 export class App {
 
-  constructor(movieService) {
-    this.movieService = movieService;
-  }
+  configureRouter(config, router) {
 
-  activate() {
-    return this.movieService.fetchAll()
-      .then(movies => this.movies = movies);
+    // expose router object to view
+    this.router = router;
+
+    config.map([
+      { route: ['', 'list'], moduleId: 'movie/list', title: 'List', nav: true},
+      { route: 'about', moduleId: 'about/about', title: 'About', nav: true}
+    ]);
   }
 
 }
