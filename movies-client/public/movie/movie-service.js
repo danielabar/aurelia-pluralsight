@@ -6,16 +6,10 @@ export class MovieService {
 
   constructor(httpClient) {
     this.http = httpClient;
-    // attempted to use http interceptor but not working as expected
     this.http.configure(config => {
       config
         .useStandardConfiguration()
-        .withBaseUrl('http://localhost:3000/')
-        .withInterceptor({
-          responseError: function(err) {
-            console.dir(err);
-          }
-        });
+        .withBaseUrl('http://localhost:3000/');
     });
   }
 
@@ -26,7 +20,11 @@ export class MovieService {
 
   fetchOne(id) {
     return this.http.fetch(`movies/${id}`)
-      .then(response => response.json());
+      .then(response => response.json())
+      .catch(err => {
+        console.log('=== FETCH ONE CATCH ===');
+        err.json().then(errObj => console.dir(errObj.error.message));
+      });
   }
 
 }
