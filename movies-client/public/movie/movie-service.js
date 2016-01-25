@@ -1,10 +1,12 @@
 import {inject} from 'aurelia-framework';
 import {HttpClient} from 'aurelia-fetch-client';
+import {getLogger} from 'aurelia-logging';
 
 @inject(HttpClient)
 export class MovieService {
 
   constructor(httpClient) {
+    this.logger = getLogger('MovieService');
     this.http = httpClient;
     this.http.configure(config => {
       config
@@ -22,8 +24,7 @@ export class MovieService {
     return this.http.fetch(`movies/${id}`)
       .then(response => response.json())
       .catch(err => {
-        console.log('=== FETCH ONE CATCH ===');
-        err.json().then(errObj => console.dir(errObj.error.message));
+        err.json().then(errObj => this.logger.error(errObj.error.message));
       });
   }
 
