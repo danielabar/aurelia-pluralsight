@@ -441,42 +441,71 @@ Aurelia provides custom attribute `show`. Bind expression `router.isNavigating` 
 </div>
 ```
 
-## Data Binding
+## Templates and Bindings
 
-`show.bind` hides and shows an element depending on truthiness of expression.
+Templates always start with a `<template>` element, which is defined as part of the HTML Specification, as a way to declare document fragments for script manipulation. Aurelia manages these templates, places them into the DOM at the appropriate place, and supports data binding and string interpolation expressions inside the template.
+
+Data binding links state and behavior in javascript view models, with the html that is in the template. All binding expressions have a dot ".", for example `href.bind`, `if.bind`, `repeat.for`. Aurelia templating and binding mechanisms parse these expressions. You can ".bind" to just about any standard or custom attribute. For example, could add `style.bind` to a dom element, to bind to the inline styles.
+
+Examples of data binding expressions include:
+
+`show.bind` hides and shows an element depending on truthiness of expression:
+
+```html
+<div class="container" show.bind="router.isNavigating">
+  <i class="fa fa-spinner fa-spin"></i>
+</div>
+```
+
+Note that if the expression if false, the element will not be visible, but it will still be in the DOM.
 
 `if.bind` remove or add element from DOM depending on truthiness of expression.
 
-`.bind` can be added to almost any element, for example to use inline styles
+If you simply want to mix in some string content with markup, use _string interpolation_ using dollar and curly brace syntax, for example:
 
 ```html
-<li style.bind="foo">some item</li>
-```
-
-String interpolation is done with `${bar}`
-
-When using `.bind`, dollar sign and curly braces are not needed.
-
-Bind syntax is a little cleaner, but string interpolation is useful when static content
-needs to be mixed into the expression.
-
-String interpolation is always one way, content moved from view-model into the view as a string.
-Whereas `.bind` can be one or two way, Aurelia will pick a sensible default if you don't specify.
-
-For example binding to a css class will be one way:
-
-```html
-<li repeat.for="row of router.navigation" class="${row.isActive ? 'active' : ''}">
-  ...
+<li repeat.for="row of router.navigation">
+  <a href.bind="row.href">${row.title}</a>
 </li>
 ```
 
-But binding to an text input value will be two way by default, because Aurelia assumes
-if user types into the input, that the value should be pushed back to the JavaScript object.
+String interpolation can also be used to set attribute values, for example to conditionally populate the class attribute:
 
 ```html
-<input type="text" value.bind="movie.title">
+<li repeat.for="row of router.navigation" class="${row.isActive ? 'active' : ''}">
+  <a href.bind="row.href">${row.title}</a>
+</li>
 ```
+
+Note the above expression to populate the "class" attribute could also instead have been done with bind. In this case would not need the dollar sign or curly braces:
+
+```html
+<li repeat.for="row of router.navigation" class.bind="row.isActive ? 'active' : ''">
+  <a href.bind="row.href">${row.title}</a>
+</li>
+```
+
+### String Interpolation vs Bind
+
+Bind syntax is cleaner, but if you want to mix in static content, use string interpolation. For example, if want another static class value of "btn":
+
+```html
+<li repeat.for="row of router.navigation" class="btn ${row.isActive ? 'active' : ''}">
+<a href.bind="row.href">${row.title}</a>
+</li>
+```
+
+String interpolation is always one-way, content flows from view model into the view as a string. Bind can be one or two way. Aurelia will pick a sensible default. For example, when binding to a class attribute, will be one way. But when binding to the value of an input element, that will be two-way by default. Framework assumes if user types into the input, value should be pushed back into the javascript object.
+
+```html
+<input type="text" value.bind="move.title">
+```
+
+OLD NOTES:
+==============================================
+## Data Binding
+
+
 
 To wire up click handler, can use either `click.bind` or `click.delegate`.
 Delegate is more flexible because it catches click events on the element AND any of its descendants.
