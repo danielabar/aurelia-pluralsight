@@ -24,6 +24,11 @@ System.config({
     "bootstrap": "github:twbs/bootstrap@3.3.6",
     "core-js": "npm:core-js@1.2.6",
     "font-awesome": "npm:font-awesome@4.5.0",
+    "jquery": "npm:jquery@2.2.0",
+    "jquery-ui": "github:components/jqueryui@1.11.4",
+    "github:components/jqueryui@1.11.4": {
+      "jquery": "npm:jquery@2.2.0"
+    },
     "github:jspm/nodelibs-assert@0.1.0": {
       "assert": "npm:assert@1.3.0"
     },
