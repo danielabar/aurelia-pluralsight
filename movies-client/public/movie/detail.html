@@ -10,9 +10,13 @@
       <div class="col-md-3">
         <a route-href="route: home">Back to list</a>
       </div>
+
       <!-- Experiment with wrapping jquery-ui datepicker as Aurelia custom element -->
       <div class="col-md-2">
         <datepicker data.two-way="movie.dateExperiment"></datepicker>
+      </div>
+      <div class="col-md-2">
+        <button class="btn btn-default" click.trigger="log()">Log</button>
       </div>
     </div>
   </div>

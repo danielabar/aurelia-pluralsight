@@ -18,8 +18,13 @@ export class Datepicker {
   attached() {
     $(this.element).find('.wrapped-datepicker').datepicker({
       onSelect: dateText => {
-        console.log(`dateText = ${dateText}`);
+        console.log(`User selected: ${dateText}`);
+        this.data = dateText;
       }
     });
+    // prepopulate
+    if (this.data) {
+      $(this.element).find('.wrapped-datepicker').datepicker('setDate', this.data);
+    }
   }
 }
