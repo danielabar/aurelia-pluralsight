@@ -5,18 +5,21 @@ var router = express.Router();
 var moviesList = [
   {
     "id" : 1,
-    "title" : "Star Wars",
-    "releaseYear" : 1983
+    "title" : "Star Wars: Episode IV",
+    "description": "Luke Skywalker joins forces with a Jedi Knight, a cocky pilot, a wookiee and two droids to save the galaxy from the Empire's world-destroying battle-station, while also attempting to rescue Princess Leia from the evil Darth Vader.",
+    "releaseYear" : 1977
   },
   {
     "id" : 11,
-    "title" : "Star Trek",
-    "releaseYear" : 1981
+    "title" : "Star Trek: The Motion Picture",
+    "description": "When an alien spacecraft of enormous power is spotted approaching Earth, Admiral Kirk resumes command of the Starship Enterprise in order to intercept, examine and hopefully stop the intruder.",
+    "releaseYear" : 1979
   },
   {
     "id" : 21,
     "title" : "Shrek",
-    "releaseYear" : 2004
+    "description": "After his swamp is filled with magical creatures, an ogre agrees to rescue a princess for a villainous lord in order to get his land back.",
+    "releaseYear" : 2001
   }
 ];
 
@@ -24,7 +27,7 @@ router.get('/', function(req, res) {
   res.send(moviesList);
 });
 
-// 1 second delay to test UI loading indicator
+// Add a delay to test UI loading indicator
 router.get('/:id', function(req, res) {
   setTimeout(function() {
     var movieId = parseInt(req.params.id, 10);
@@ -36,7 +39,7 @@ router.get('/:id', function(req, res) {
     } else {
       res.status(404).send({error: {message: 'We did not find a movie with id: ' + req.params.id } });
     }
-  }, 1000);
+  }, 500);
 
 });
 
@@ -49,6 +52,7 @@ router.post('/', function(req, res) {
   var created = {
     id: 'tbd',
     title: req.body.title,
+    description: req.body.description,
     releaseYear: req.body.releaseYear,
   };
   moviesList.push(created);
@@ -69,6 +73,7 @@ router.put('/:id', function(req, res) {
     if (moviesList[i].id === movieId) {
       matchingMovie = moviesList[i];
       matchingMovie.title = req.body.title;
+      matchingMovie.description = req.body.description;
       matchingMovie.releaseYear = req.body.releaseYear;
     }
   }
