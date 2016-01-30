@@ -17,6 +17,10 @@ export class DatePicker {
   }
 
   attached() {
-    $('.datepicker').datepicker();
+    let selector = $(this.element).find('.date');
+    selector.datepicker({
+      format: 'yyyy-mm-dd',
+      autoclose: true
+    });
   }
 }

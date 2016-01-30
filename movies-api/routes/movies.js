@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var moment = require('moment');
 
 // Simple in-memory representation
 var moviesList = [
@@ -7,19 +8,19 @@ var moviesList = [
     "id" : 1,
     "title" : "Star Wars: Episode IV",
     "description": "Luke Skywalker joins forces with a Jedi Knight, a cocky pilot, a wookiee and two droids to save the galaxy from the Empire's world-destroying battle-station, while also attempting to rescue Princess Leia from the evil Darth Vader.",
-    "releaseYear" : 1977
+    "releaseYear" : moment('1977-12-25', 'YYYY-MM-DD').format('YYYY-MM-DD')
   },
   {
     "id" : 11,
     "title" : "Star Trek: The Motion Picture",
     "description": "When an alien spacecraft of enormous power is spotted approaching Earth, Admiral Kirk resumes command of the Starship Enterprise in order to intercept, examine and hopefully stop the intruder.",
-    "releaseYear" : 1979
+    "releaseYear" : moment('1979-11-20', 'YYYY-MM-DD').format('YYYY-MM-DD')
   },
   {
     "id" : 21,
     "title" : "Shrek",
     "description": "After his swamp is filled with magical creatures, an ogre agrees to rescue a princess for a villainous lord in order to get his land back.",
-    "releaseYear" : 2001
+    "releaseYear" : moment('2001-06-15', 'YYYY-MM-DD').format('YYYY-MM-DD')
   }
 ];
 
