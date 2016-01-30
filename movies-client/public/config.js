@@ -18,6 +18,7 @@ System.config({
     "aurelia-bootstrapper": "npm:aurelia-bootstrapper@1.0.0-beta.1.0.2",
     "aurelia-fetch-client": "npm:aurelia-fetch-client@1.0.0-beta.1.0.2",
     "aurelia-framework": "npm:aurelia-framework@1.0.0-beta.1.0.8",
+    "aurelia-http-client": "npm:aurelia-http-client@1.0.0-beta.1.1.0",
     "aurelia-logging": "npm:aurelia-logging@1.0.0-beta.1",
     "babel": "npm:babel-core@5.8.35",
     "babel-runtime": "npm:babel-runtime@5.8.35",
@@ -96,6 +97,11 @@ System.config({
       "aurelia-history": "npm:aurelia-history@1.0.0-beta.1",
       "aurelia-pal": "npm:aurelia-pal@1.0.0-beta.1.0.2",
       "core-js": "npm:core-js@1.2.6"
+    },
+    "npm:aurelia-http-client@1.0.0-beta.1.1.0": {
+      "aurelia-pal": "npm:aurelia-pal@1.0.0-beta.1.1.1",
+      "aurelia-path": "npm:aurelia-path@1.0.0-beta.1.1.0",
+      "core-js": "npm:core-js@2.0.3"
     },
     "npm:aurelia-loader-default@1.0.0-beta.1.0.2": {
       "aurelia-loader": "npm:aurelia-loader@1.0.0-beta.1.0.1",
@@ -178,6 +184,12 @@ System.config({
       "jquery": "npm:jquery@2.2.0"
     },
     "npm:core-js@1.2.6": {
+      "fs": "github:jspm/nodelibs-fs@0.1.2",
+      "path": "github:jspm/nodelibs-path@0.1.0",
+      "process": "github:jspm/nodelibs-process@0.1.2",
+      "systemjs-json": "github:systemjs/plugin-json@0.1.0"
+    },
+    "npm:core-js@2.0.3": {
       "fs": "github:jspm/nodelibs-fs@0.1.2",
       "path": "github:jspm/nodelibs-path@0.1.0",
       "process": "github:jspm/nodelibs-process@0.1.2",

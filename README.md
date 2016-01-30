@@ -507,7 +507,25 @@ String interpolation is always one-way, content flows from view model into the v
 <input type="text" value.bind="move.title">
 ```
 
+### Submit a form
 
+Two options `click.trigger` or `click.delegate`
+
+```html
+<button class="btn btn-primary" click.delegate="save()">Save</button>
+```
+
+```html
+<button class="btn btn-primary" click.trigger="save()">Save</button>
+```
+
+Both `delegate` and `trigger` will wire up click event handler on the button, but using `delegate` allows for catching click events on any of the element's descendants. This is good for an element that has a lot of children or grandchildren, and want to listen for click events on children, but don't want to waste time and memory to wire up cick event on each individual descendant.
+
+Can also pass in `$event`, which will expose the native event object to view model method that is handling the click:
+
+```html
+<button class="btn btn-primary" click.delegate="save($event)">Save</button>
+```
 
 
 
