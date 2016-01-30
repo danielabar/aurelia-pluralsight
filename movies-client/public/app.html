@@ -6,7 +6,8 @@
         <a href="#" class="navbar-brand">Movies</a>
       </div>
       <ul class="nav navbar-nav">
-        <li repeat.for="row of router.navigation" class="${row.isActive ? 'active' : ''}">
+        <!-- <li repeat.for="row of router.navigation" class="${row.isActive ? 'active' : ''}"> -->
+        <li repeat.for="row of router.navigation" class.bind="row.isActive ? 'active' : ''">
           <a href.bind="row.href">${row.title}</a>
         </li>
       </ul>

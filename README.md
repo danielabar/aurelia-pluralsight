@@ -17,8 +17,12 @@
     - [UI](#ui)
   - [Configuration and Routing](#configuration-and-routing)
     - [Client Side Routing](#client-side-routing)
-      - [Configure Routes](#configure-routes)
-      - [Route Parameters](#route-parameters)
+    - [Configure Routes](#configure-routes)
+    - [Route Parameters](#route-parameters)
+    - [Navigation Animation](#navigation-animation)
+  - [Templates and Bindings](#templates-and-bindings)
+    - [String Interpolation vs Bind](#string-interpolation-vs-bind)
+- [OLD NOTES:](#old-notes)
   - [Data Binding](#data-binding)
   - [HTTP Client Configuration](#http-client-configuration)
   - [Client side validation](#client-side-validation)
@@ -377,6 +381,8 @@ If `route` is an empty string, that matches application root, i.e. `http://local
 
 `route` can also be an array indicating any of the strings should match, ` { route : ['', 'home'], ...}` means if url is root or `/#/home`, then that's a match.
 
+Multiple routes can point to same module, for example might have "edit/:id" and "create" routes both use the same module to edit or create some entity.
+
 ### Route Parameters
 
 Start by defining a route, note the `name` parameter. This will be used to reference it in the `route-href` attribute in the view:
@@ -500,6 +506,14 @@ String interpolation is always one-way, content flows from view model into the v
 ```html
 <input type="text" value.bind="move.title">
 ```
+
+
+
+
+
+
+
+
 
 OLD NOTES:
 ==============================================
