@@ -1,4 +1,10 @@
 <template>
   <input type="text" value.bind="query">
   <button click.trigger="search()">Search</button>
+
+  <ul>
+    <li repeat.for="result of searchResults">
+      ${result.name}
+    </li>
+  </ul>
 </template>
