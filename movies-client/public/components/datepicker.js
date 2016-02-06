@@ -41,9 +41,9 @@ export class DatePicker {
   }
 
   dataChanged(newVal, oldVal) {
-    this.logger.debug(`dataChanged: newVal = ${newVal}, oldVal = ${oldVal}`);
+    // this.data is already bound to newVal!
+    this.logger.debug(`dataChanged: newVal = ${newVal}, oldVal = ${oldVal}, this.data = ${this.data}`);
     if (newVal) {
-      this.data = newVal;
       this.selector.datepicker('setDate', moment(this.data, 'YYYY-MM-DD').toDate());
     }
   }
