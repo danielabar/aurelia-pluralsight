@@ -6,7 +6,7 @@ import {getLogger} from 'aurelia-logging';
 export class Edit {
 
   constructor(movieService) {
-    this.logger = getLogger('movie/edit');
+    this.logger = getLogger('edit');
     this.movieService = movieService;
   }
 
@@ -21,6 +21,11 @@ export class Edit {
         this.movie = movie
         this.logger.debug(`Movie update success`);
       });
+  }
+
+  test() {
+    this.movie.releaseYear = '2018-01-01';
+    this.logger.debug(`test: movie.releaseYear = ${this.movie.releaseYear}`);
   }
 
 }
