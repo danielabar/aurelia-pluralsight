@@ -1,7 +1,6 @@
 import {inject} from 'aurelia-framework';
 import {HttpClient} from 'aurelia-fetch-client';
 import {getLogger} from 'aurelia-logging';
-// import {MovieServiceUpdate} from './movie-service-update';
 
 @inject(HttpClient)
 export class MovieService {
@@ -30,7 +29,6 @@ export class MovieService {
   }
 
   save(movie) {
-    console.dir(movie);
     if (movie.id) {
       return this.http.fetch(`movies/${movie.id}`, {
         method: 'put',

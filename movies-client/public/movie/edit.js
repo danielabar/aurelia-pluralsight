@@ -1,6 +1,7 @@
 import {inject} from 'aurelia-framework';
 import {MovieService} from './movie-service.js';
 import {getLogger} from 'aurelia-logging';
+import * as toastr from 'toastr';
 
 @inject(MovieService)
 export class Edit {
@@ -19,7 +20,7 @@ export class Edit {
     return this.movieService.save(this.movie)
       .then(movie => {
         this.movie = movie
-        this.logger.debug(`Movie update success`);
+        toastr.success('Movie saved');
       });
   }
 
