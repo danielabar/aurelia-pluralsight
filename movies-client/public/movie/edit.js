@@ -3,12 +3,13 @@ import {MovieService} from './movie-service.js';
 import {getLogger} from 'aurelia-logging';
 import * as toastr from 'toastr';
 
-@inject(MovieService)
+@inject(MovieService, toastr)
 export class Edit {
 
-  constructor(movieService) {
+  constructor(movieService, toastr) {
     this.logger = getLogger('edit');
     this.movieService = movieService;
+    this.toastr = toastr;
   }
 
   activate(params) {
@@ -20,7 +21,7 @@ export class Edit {
     return this.movieService.save(this.movie)
       .then(movie => {
         this.movie = movie
-        toastr.success('Movie saved');
+        this.toastr.success('Movie saved');
       });
   }
 
