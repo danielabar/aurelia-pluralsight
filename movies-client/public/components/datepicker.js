@@ -1,13 +1,12 @@
-import {inject, customElement, bindable} from 'aurelia-framework';
+import {inject, bindable} from 'aurelia-framework';
 import $ from 'jquery';
 import 'bootstrap-datepicker/dist/js/bootstrap-datepicker';
 import 'bootstrap-datepicker/dist/css/bootstrap-datepicker3.css!';
 import moment from 'moment';
 import {getLogger} from 'aurelia-logging';
 
-@customElement('datepicker')
 @inject(Element)
-export class DatePicker {
+export class DatepickerCustomElement {
   @bindable data;
 
   constructor(element) {
